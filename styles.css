@@ -29,7 +29,7 @@ body {
     min-height: 100vh;
 }
 
-/* Realistic rotating star field background */
+/* Realistic rotating star field background inspired by Star Wars */
 body::before {
     content: '';
     position: fixed;
@@ -38,24 +38,47 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
-        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.9), transparent),
-        radial-gradient(0.5px 0.5px at 90px 40px, #ffffff, transparent),
+        /* Large bright stars */
+        radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, transparent),
         radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(0.5px 0.5px at 160px 30px, #ffffff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #ffffff, transparent),
         radial-gradient(1px 1px at 200px 90px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(0.5px 0.5px at 220px 10px, #ffffff, transparent),
-        radial-gradient(1px 1px at 250px 60px, rgba(255,255,255,0.9), transparent),
-        radial-gradient(0.5px 0.5px at 300px 20px, #ffffff, transparent),
-        radial-gradient(1px 1px at 320px 80px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(0.5px 0.5px at 350px 50px, #ffffff, transparent),
-        radial-gradient(1px 1px at 380px 100px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 220px 10px, #ffffff, transparent),
+        radial-gradient(2px 2px at 250px 60px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 300px 20px, #ffffff, transparent),
+        radial-gradient(1.5px 1.5px at 320px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 350px 50px, #ffffff, transparent),
+        radial-gradient(2px 2px at 380px 100px, rgba(255,255,255,0.8), transparent),
+        
+        /* Medium stars */
+        radial-gradient(1px 1px at 50px 120px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 120px 160px, #ffffff, transparent),
+        radial-gradient(1px 1px at 180px 140px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 270px 130px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 340px 170px, #ffffff, transparent),
+        
+        /* Small distant stars */
+        radial-gradient(0.5px 0.5px at 15px 80px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(0.5px 0.5px at 75px 15px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(0.5px 0.5px at 145px 95px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(0.5px 0.5px at 195px 25px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(0.5px 0.5px at 265px 85px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(0.5px 0.5px at 315px 125px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(0.5px 0.5px at 365px 45px, rgba(255,255,255,0.6), transparent),
+        
+        /* Colored stars (distant galaxies/nebulae) */
+        radial-gradient(1px 1px at 60px 180px, rgba(16, 185, 129, 0.3), transparent),
+        radial-gradient(0.5px 0.5px at 210px 170px, rgba(59, 130, 246, 0.4), transparent),
+        radial-gradient(0.5px 0.5px at 330px 190px, rgba(168, 85, 247, 0.3), transparent),
+        
         linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--darker-bg) 100%);
     background-repeat: repeat;
-    background-size: 400px 150px;
-    opacity: 0.8;
+    background-size: 400px 200px;
+    opacity: 0.9;
     z-index: -2;
-    animation: starFieldRotateX 300s linear infinite;
+    animation: starFieldRotate 400s linear infinite;
 }
 
 body::after {
@@ -66,26 +89,37 @@ body::after {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(0.5px 0.5px at 30px 50px, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(1px 1px at 80px 20px, rgba(255, 255, 255, 0.6), transparent),
+        /* Second layer of stars moving in opposite direction */
+        radial-gradient(1px 1px at 30px 50px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1.5px 1.5px at 80px 20px, rgba(255, 255, 255, 0.6), transparent),
         radial-gradient(0.5px 0.5px at 150px 70px, rgba(255, 255, 255, 0.3), transparent),
         radial-gradient(1px 1px at 200px 40px, rgba(255, 255, 255, 0.7), transparent),
         radial-gradient(0.5px 0.5px at 280px 90px, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 320px 110px, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(0.5px 0.5px at 360px 25px, rgba(255, 255, 255, 0.6), transparent);
+        radial-gradient(1.5px 1.5px at 320px 110px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(0.5px 0.5px at 360px 25px, rgba(255, 255, 255, 0.6), transparent),
+        
+        /* Additional depth layer */
+        radial-gradient(0.5px 0.5px at 110px 130px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 170px 180px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(0.5px 0.5px at 240px 150px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 290px 170px, rgba(255, 255, 255, 0.6), transparent),
+        
+        /* More colored distant objects */
+        radial-gradient(0.5px 0.5px at 100px 200px, rgba(239, 68, 68, 0.2), transparent),
+        radial-gradient(0.5px 0.5px at 250px 190px, rgba(245, 158, 11, 0.3), transparent);
     background-repeat: repeat;
-    background-size: 420px 160px;
-    opacity: 0.4;
+    background-size: 420px 180px;
+    opacity: 0.5;
     z-index: -1;
-    animation: starFieldRotateX 450s linear infinite reverse;
+    animation: starFieldRotate 600s linear infinite reverse;
 }
 
-@keyframes starFieldRotateX {
+@keyframes starFieldRotate {
     0% { 
-        transform: perspective(1000px) rotateX(0deg) translateX(0);
+        transform: perspective(2000px) rotateY(0deg) rotateX(5deg) translateZ(0);
     }
     100% { 
-        transform: perspective(1000px) rotateX(360deg) translateX(-400px);
+        transform: perspective(2000px) rotateY(360deg) rotateX(5deg) translateZ(-100px);
     }
 }
 
@@ -295,6 +329,8 @@ nav ul li a:hover {
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .btn::before {
@@ -304,12 +340,32 @@ nav ul li a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
     transition: left 0.6s ease;
+    z-index: -1;
 }
 
 .btn:hover::before {
     left: 100%;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
@@ -319,9 +375,10 @@ nav ul li a:hover {
 }
 
 .btn-primary:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.5);
     background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+    color: var(--darker-bg);
 }
 
 .btn-secondary {
@@ -334,11 +391,11 @@ nav ul li a:hover {
 .btn-secondary:hover {
     background: var(--primary-green);
     color: var(--darker-bg);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4);
 }
 
-/* Floating elements with better physics */
+/* Star Wars inspired floating elements */
 .floating-elements {
     position: absolute;
     width: 100%;
@@ -350,59 +407,99 @@ nav ul li a:hover {
 .floating-dot {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--primary-green), var(--secondary-green));
-    opacity: 0.6;
-    animation: floatImproved 8s ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    animation: starFloat 8s ease-in-out infinite;
+    filter: blur(0.5px);
 }
 
+/* Create different types of floating stars */
 .floating-dot:nth-child(1) { 
-    width: 6px; height: 6px; 
+    width: 8px; height: 8px; 
     top: 20%; left: 10%; 
     animation-delay: 0s; 
-    animation-duration: 12s;
+    animation-duration: 15s;
+    background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 70%);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
 }
+
 .floating-dot:nth-child(2) { 
     width: 4px; height: 4px; 
     top: 60%; left: 20%; 
     animation-delay: 3s; 
-    animation-duration: 10s;
-}
-.floating-dot:nth-child(3) { 
-    width: 8px; height: 8px; 
-    top: 30%; right: 15%; 
-    animation-delay: 6s; 
-    animation-duration: 14s;
-}
-.floating-dot:nth-child(4) { 
-    width: 5px; height: 5px; 
-    bottom: 40%; right: 25%; 
-    animation-delay: 2s; 
-    animation-duration: 11s;
-}
-.floating-dot:nth-child(5) { 
-    width: 7px; height: 7px; 
-    bottom: 20%; left: 30%; 
-    animation-delay: 4s; 
-    animation-duration: 13s;
+    animation-duration: 12s;
+    background: radial-gradient(circle, var(--accent-green) 0%, rgba(52, 211, 153, 0.8) 30%, transparent 70%);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6), 0 0 20px rgba(52, 211, 153, 0.3);
 }
 
-@keyframes floatImproved {
+.floating-dot:nth-child(3) { 
+    width: 6px; height: 6px; 
+    top: 30%; right: 15%; 
+    animation-delay: 6s; 
+    animation-duration: 18s;
+    background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.9) 30%, transparent 70%);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+.floating-dot:nth-child(4) { 
+    width: 3px; height: 3px; 
+    bottom: 40%; right: 25%; 
+    animation-delay: 2s; 
+    animation-duration: 10s;
+    background: radial-gradient(circle, rgba(59, 130, 246, 1) 0%, rgba(59, 130, 246, 0.8) 30%, transparent 70%);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6), 0 0 16px rgba(59, 130, 246, 0.3);
+}
+
+.floating-dot:nth-child(5) { 
+    width: 5px; height: 5px; 
+    bottom: 20%; left: 30%; 
+    animation-delay: 4s; 
+    animation-duration: 14s;
+    background: radial-gradient(circle, var(--primary-green) 0%, rgba(16, 185, 129, 0.8) 30%, transparent 70%);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.floating-dot:nth-child(6) { 
+    width: 7px; height: 7px; 
+    top: 45%; left: 70%; 
+    animation-delay: 5s; 
+    animation-duration: 16s;
+    background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.8) 30%, transparent 70%);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.7), 0 0 28px rgba(255, 255, 255, 0.4);
+}
+
+.floating-dot:nth-child(7) { 
+    width: 3px; height: 3px; 
+    top: 75%; right: 40%; 
+    animation-delay: 7s; 
+    animation-duration: 11s;
+    background: radial-gradient(circle, rgba(168, 85, 247, 1) 0%, rgba(168, 85, 247, 0.8) 30%, transparent 70%);
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.6), 0 0 16px rgba(168, 85, 247, 0.3);
+}
+
+.floating-dot:nth-child(8) { 
+    width: 4px; height: 4px; 
+    top: 15%; left: 50%; 
+    animation-delay: 1s; 
+    animation-duration: 13s;
+    background: radial-gradient(circle, rgba(245, 158, 11, 1) 0%, rgba(245, 158, 11, 0.8) 30%, transparent 70%);
+    box-shadow: 0 0 9px rgba(245, 158, 11, 0.6), 0 0 18px rgba(245, 158, 11, 0.3);
+}
+
+@keyframes starFloat {
     0%, 100% { 
         transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); 
-        opacity: 0.6;
+        opacity: 0.7;
     }
     25% { 
-        transform: translateY(-30px) translateX(15px) scale(1.3) rotate(90deg); 
-        opacity: 0.8;
-    }
-    50% { 
-        transform: translateY(-60px) translateX(-10px) scale(0.8) rotate(180deg); 
+        transform: translateY(-40px) translateX(20px) scale(1.2) rotate(90deg); 
         opacity: 1;
     }
+    50% { 
+        transform: translateY(-80px) translateX(-15px) scale(0.8) rotate(180deg); 
+        opacity: 0.9;
+    }
     75% { 
-        transform: translateY(-30px) translateX(-20px) scale(1.1) rotate(270deg); 
-        opacity: 0.7;
+        transform: translateY(-40px) translateX(-25px) scale(1.1) rotate(270deg); 
+        opacity: 0.8;
     }
 }
 
