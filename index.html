@@ -26,6 +26,9 @@
             <div class="floating-dot"></div>
             <div class="floating-dot"></div>
             <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
         </div>
         
         <div class="container">
@@ -83,6 +86,29 @@
             });
         }
 
+        // Enhanced button interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.08)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+                
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(-4px) scale(1.04)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.08)';
+                });
+            });
+        });
+
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -117,14 +143,32 @@
             });
         });
 
-        // Add parallax effect to floating dots
+        // Enhanced parallax effect for floating dots with Star Wars feel
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const dots = document.querySelectorAll('.floating-dot');
             
             dots.forEach((dot, index) => {
-                const speed = 0.5 + (index * 0.1);
-                dot.style.transform = `translateY(${scrolled * speed}px)`;
+                const speed = 0.3 + (index * 0.1);
+                const rotation = scrolled * (0.1 + (index * 0.05));
+                dot.style.transform = `translateY(${scrolled * speed}px) rotate(${rotation}deg)`;
+            });
+            
+            // Add subtle parallax to the star field background
+            const body = document.body;
+            body.style.backgroundPosition = `${scrolled * 0.1}px ${scrolled * 0.05}px`;
+        });
+
+        // Mouse movement parallax effect for extra immersion
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const dots = document.querySelectorAll('.floating-dot');
+            dots.forEach((dot, index) => {
+                const moveX = (mouseX - 0.5) * (10 + index * 2);
+                const moveY = (mouseY - 0.5) * (10 + index * 2);
+                dot.style.transform += ` translate(${moveX}px, ${moveY}px)`;
             });
         });
     </script>
