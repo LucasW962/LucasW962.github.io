@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examples - Yoda (Lucas W.)</title>
+    <title>Examples - Lucas W.</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -44,15 +44,6 @@
             padding: 100px 0;
             background: var(--dark-bg);
             position: relative;
-        }
-
-        .force-quote {
-            text-align: center;
-            font-style: italic;
-            color: var(--primary-green);
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
         }
 
         .category-filter {
@@ -162,23 +153,6 @@
             color: var(--darker-bg);
             transform: scale(1.1);
         }
-
-        .jedi-wisdom {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 3rem 0;
-            text-align: center;
-            backdrop-filter: blur(20px);
-        }
-
-        .jedi-wisdom::before {
-            content: '🌟';
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
     </style>
 </head>
 <body>
@@ -197,10 +171,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Code Examples</h1>
-                <p class="subtitle">The Force is Strong with These</p>
+                <p class="subtitle">Development Skills in Action</p>
                 <p class="description">
-                    "Do or do not, there is no try." - Master Yoda<br>
-                    Here are video demonstrations of my development skills in action.
+                    Interactive demonstrations of my coding projects and technical expertise.<br>
+                    Explore various technologies and development approaches I've mastered.
                 </p>
             </div>
         </div>
@@ -208,13 +182,6 @@
 
     <section class="video-section">
         <div class="container">
-            <div class="jedi-wisdom">
-                <p class="force-quote">
-                    "In coding, as in the Force, balance you must find. 
-                    Clean code leads to maintainable applications, maintainable applications lead to user satisfaction."
-                </p>
-            </div>
-
             <div class="category-filter">
                 <button class="filter-btn active" data-category="all">All Examples</button>
                 <button class="filter-btn" data-category="Web Development">Web Development</button>
@@ -482,24 +449,6 @@
                 hero.appendChild(star);
             }
         });
-
-        // Add some Force quotes that appear randomly
-        const forceQuotes = [
-            "\"Size matters not. Look at me. Judge me by my size, do you?\" - Yoda",
-            "\"Code with purpose, you must. Bugs lead to suffering.\" - Master Yoda",
-            "\"The best code is like the Force - invisible, yet powerful.\" - Yoda",
-            "\"Patience you must have, my young developer.\" - Yoda"
-        ];
-
-        setInterval(() => {
-            const quote = document.querySelector('.force-quote');
-            const randomQuote = forceQuotes[Math.floor(Math.random() * forceQuotes.length)];
-            quote.style.opacity = '0';
-            setTimeout(() => {
-                quote.textContent = randomQuote;
-                quote.style.opacity = '0.8';
-            }, 500);
-        }, 10000); // Change quote every 10 seconds
     </script>
 </body>
 </html>
