@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .contact-hero {
-            height: 60vh;
+            height: 40vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--surface-bg) 100%);
-            margin-top: 80px;
+            margin-top: 60px;
         }
         
         .discord-card {
             max-width: 500px;
-            margin: 4rem auto;
+            margin: 2rem auto;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             padding: 3rem;
@@ -78,10 +78,6 @@
             border-radius: 50%;
         }
         
-        .profile-picture .fallback-emoji {
-            display: none;
-        }
-        
         .discord-username {
             font-size: 2.5rem;
             font-weight: 800;
@@ -135,82 +131,6 @@
         
         .discord-id:hover::after {
             opacity: 1;
-        }
-        
-        .status-indicator {
-            color: var(--primary-green);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--primary-green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-        
-        /* Status-specific styles */
-        .status-online .status-dot {
-            background: #43b581;
-            box-shadow: 0 0 10px rgba(67, 181, 129, 0.5);
-        }
-        
-        .status-idle .status-dot {
-            background: #faa61a;
-            box-shadow: 0 0 10px rgba(250, 166, 26, 0.5);
-        }
-        
-        .status-dnd .status-dot {
-            background: #f04747;
-            box-shadow: 0 0 10px rgba(240, 71, 71, 0.5);
-        }
-        
-        .status-offline .status-dot {
-            background: #747f8d;
-            box-shadow: none;
-            animation: none;
-        }
-        
-        .activity-display {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .activity-title {
-            font-size: 0.9rem;
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .activity-details {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        
-        .activity-details a {
-            color: var(--primary-green);
-            text-decoration: underline;
-            transition: color 0.3s ease;
-        }
-        
-        .activity-details a:hover {
-            color: var(--accent-green);
         }
         
         @keyframes pulse {
@@ -289,25 +209,13 @@
                 <div class="profile-picture">
                     <img src="https://media.tenor.com/QU6jPq4WyP8AAAAC/kitty-cat-sandwich-cats-sandwich.gif" 
                          alt="Discord Profile" 
-                         id="profileGif"
-                         onerror="this.style.display='none'; document.getElementById('fallbackEmoji').style.display='flex';">
-                    <span id="fallbackEmoji" class="fallback-emoji">👨‍💻</span>
+                         id="profileGif">
                 </div>
                 
                 <div class="discord-username">yoda_06</div>
                 
-                <div class="status-indicator" id="statusIndicator">
-                    <div class="status-dot" id="statusDot"></div>
-                    <span id="statusText">Checking status...</span>
-                </div>
-                
                 <div class="discord-id" onclick="copyToClipboard('yoda_06')" title="Click to copy Discord username">
                     @yoda_06
-                </div>
-                
-                <div id="activityDisplay" class="activity-display" style="display: none;">
-                    <div class="activity-title" id="activityTitle"></div>
-                    <div class="activity-details" id="activityDetails"></div>
                 </div>
                 
                 <p style="color: var(--text-secondary); margin-top: 1rem;">
@@ -322,125 +230,6 @@
     </div>
     
     <script>
-        const DISCORD_USER_ID = '747833402866270220'; // Your Discord User ID
-        let lanyardSetup = false; // Track if Lanyard is properly set up
-        
-        async function getDiscordStatus() {
-            try {
-                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
-                const data = await response.json();
-                
-                if (data.success && data.data) {
-                    lanyardSetup = true;
-                    updateDiscordStatus(data.data);
-                } else {
-                    throw new Error('User not found in Lanyard');
-                }
-            } catch (error) {
-                console.error('Lanyard API error:', error);
-                
-                // Show fallback status with instructions if Lanyard isn't set up
-                if (!lanyardSetup) {
-                    showLanyardSetupInfo();
-                } else {
-                    // If it was working before but now fails, show offline
-                    updateDiscordStatus({
-                        discord_status: 'offline',
-                        activities: []
-                    });
-                }
-            }
-        }
-        
-        // Show information about setting up Lanyard for real-time status
-        function showLanyardSetupInfo() {
-            const statusIndicator = document.getElementById('statusIndicator');
-            const statusText = document.getElementById('statusText');
-            const activityDisplay = document.getElementById('activityDisplay');
-            const activityTitle = document.getElementById('activityTitle');
-            const activityDetails = document.getElementById('activityDetails');
-            
-            // Show online status as default
-            statusIndicator.className = 'status-indicator status-online';
-            statusText.textContent = 'Usually Online';
-            
-            // Show setup instructions
-            activityTitle.textContent = '💡 Want Real-Time Status?';
-            activityDetails.innerHTML = `
-                Join the <a href="https://discord.gg/lanyard" target="_blank" style="color: var(--primary-green); text-decoration: underline;">Lanyard Discord</a> 
-                to show live status updates!
-            `;
-            activityDisplay.style.display = 'block';
-        }
-        
-        // Update the UI with Discord status
-        function updateDiscordStatus(userData) {
-            const statusIndicator = document.getElementById('statusIndicator');
-            const statusDot = document.getElementById('statusDot');
-            const statusText = document.getElementById('statusText');
-            const activityDisplay = document.getElementById('activityDisplay');
-            const activityTitle = document.getElementById('activityTitle');
-            const activityDetails = document.getElementById('activityDetails');
-            
-            // Remove existing status classes
-            statusIndicator.className = 'status-indicator';
-            
-            // Update status based on Discord status
-            switch (userData.discord_status) {
-                case 'online':
-                    statusIndicator.classList.add('status-online');
-                    statusText.textContent = 'Online';
-                    break;
-                case 'idle':
-                    statusIndicator.classList.add('status-idle');
-                    statusText.textContent = 'Away';
-                    break;
-                case 'dnd':
-                    statusIndicator.classList.add('status-dnd');
-                    statusText.textContent = 'Do Not Disturb';
-                    break;
-                case 'offline':
-                default:
-                    statusIndicator.classList.add('status-offline');
-                    statusText.textContent = 'Offline';
-                    break;
-            }
-            
-            // Show activity if available
-            if (userData.activities && userData.activities.length > 0) {
-                const activity = userData.activities[0]; // Show first activity
-                
-                if (activity.type === 0) { // Playing
-                    activityTitle.textContent = `🎮 Playing ${activity.name}`;
-                } else if (activity.type === 1) { // Streaming
-                    activityTitle.textContent = `🔴 Streaming ${activity.name}`;
-                } else if (activity.type === 2) { // Listening
-                    activityTitle.textContent = `🎵 Listening to ${activity.name}`;
-                } else if (activity.type === 3) { // Watching
-                    activityTitle.textContent = `📺 Watching ${activity.name}`;
-                } else if (activity.type === 4) { // Custom Status
-                    activityTitle.textContent = `💭 ${activity.state || activity.name}`;
-                } else if (activity.type === 5) { // Competing
-                    activityTitle.textContent = `🏆 Competing in ${activity.name}`;
-                }
-                
-                if (activity.details) {
-                    activityDetails.textContent = activity.details;
-                    if (activity.state) {
-                        activityDetails.textContent += ` - ${activity.state}`;
-                    }
-                } else if (activity.state) {
-                    activityDetails.textContent = activity.state;
-                } else {
-                    activityDetails.textContent = '';
-                }
-                
-                activityDisplay.style.display = 'block';
-            } else {
-                activityDisplay.style.display = 'none';
-            }
-        }
-        
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 showCopyNotification();
@@ -465,15 +254,6 @@
                 notification.classList.remove('show');
             }, 2500);
         }
-        
-        // Initialize Discord status when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get initial status
-            getDiscordStatus();
-            
-            // Update status every 30 seconds
-            setInterval(getDiscordStatus, 30000);
-        });
         
         // Intersection Observer for animations
         const observerOptions = {
