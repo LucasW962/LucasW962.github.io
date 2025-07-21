@@ -123,6 +123,10 @@ nav ul {
     gap: 3rem;
 }
 
+nav ul li {
+    position: relative;
+}
+
 nav ul li a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -130,11 +134,11 @@ nav ul li a {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
+    transition: all 0.3s ease;
     padding: 0.8rem 1.5rem;
     border-radius: 50px;
     border: 1px solid transparent;
+    display: block;
 }
 
 nav ul li a:hover {
@@ -155,26 +159,6 @@ nav ul li a:hover {
     position: relative;
     background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--surface-bg) 100%);
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.05) 0.5px, transparent 0.5px);
-    background-size: 100px 100px, 150px 150px;
-    opacity: 0.3;
-    animation: spaceRotation 400s linear infinite;
-}
-
-@keyframes spaceRotation {
-    0% { transform: rotate(0deg) translateX(20px); }
-    100% { transform: rotate(360deg) translateX(20px); }
 }
 
 .hero-content {

@@ -17,37 +17,159 @@
             margin-top: 80px;
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-
-        .contact-info {
+        .discord-card {
+            max-width: 600px;
+            margin: 4rem auto;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             padding: 3rem;
             border-radius: 25px;
             border: 1px solid var(--border-color);
-            height: fit-content;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .contact-form {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: 25px;
-            border: 1px solid var(--border-color);
+        .discord-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+            border-color: var(--primary-green);
         }
 
-        .contact-item {
+        .profile-section {
+            margin-bottom: 2rem;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-green);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+            margin: 0 auto 1.5rem;
+            background: var(--surface-bg);
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-green);
+            overflow: hidden;
+        }
+
+        .discord-username {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .discord-id {
+            font-family: 'Courier New', monospace;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
             margin-bottom: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--surface-bg);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .discord-id:hover {
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            transform: scale(1.05);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
             padding: 1.5rem;
             background: var(--surface-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-method:hover {
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-green);
+            border-radius: 50%;
+            color: var(--darker-bg);
+        }
+
+        .contact-method:hover .contact-icon {
+            background: var(--darker-bg);
+            color: var(--primary-green);
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .discord-card {
+                margin: 2rem 1rem;
+                padding: 2rem;
+            }
+            
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+            
+            .discord-username {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
             border-radius: 15px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
