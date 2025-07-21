@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples - Yoda (Lucas W.)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .examples-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--surface-bg) 100%);
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .examples-hero::before {
+            content: '⭐';
+            position: absolute;
+            font-size: 1.5rem;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        .examples-hero::after {
+            content: '✨';
+            position: absolute;
+            font-size: 1rem;
+            top: 30%;
+            right: 20%;
+            animation: starTwinkle 2.5s ease-in-out infinite 1s;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .video-section {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            position: relative;
+        }
+
+        .force-quote {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--surface-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .loading-spinner {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            background: var(--surface-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--surface-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            transform: scale(1.1);
+        }
+
+        .jedi-wisdom {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .jedi-wisdom::before {
+            content: '🌟';
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="examples.html">Examples</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="examples-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Code Examples</h1>
+                <p class="subtitle">The Force is Strong with These</p>
+                <p class="description">
+                    "Do or do not, there is no try." - Master Yoda<br>
+                    Here are video demonstrations of my development skills in action.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="jedi-wisdom">
+                <p class="force-quote">
+                    "In coding, as in the Force, balance you must find. 
+                    Clean code leads to maintainable applications, maintainable applications lead to user satisfaction."
+                </p>
+            </div>
+
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">All Examples</button>
+                <button class="filter-btn" data-category="Web Development">Web Development</button>
+                <button class="filter-btn" data-category="Frontend">Frontend</button>
+                <button class="filter-btn" data-category="Backend">Backend</button>
+                <button class="filter-btn" data-category="Mobile Development">Mobile</button>
+                <button class="filter-btn" data-category="Database">Database</button>
+            </div>
+
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="video-slider-container">
+                <div class="video-slider" id="videoSlider">
+                    <!-- Videos will be dynamically loaded here -->
+                </div>
+                
+                <div class="slider-nav prev" id="prevBtn"></div>
+                <div class="slider-nav next" id="nextBtn"></div>
+            </div>
+
+            <div class="slider-indicators" id="indicators">
+                <!-- Indicators will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="close-modal" id="closeModal">×</div>
+            <div class="modal-video" id="modalVideo">
+                <video controls style="width: 100%; height: 100%; border-radius: 15px;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h3 id="modalTitle" style="color: var(--primary-green); margin-bottom: 1rem;"></h3>
+            <p id="modalDescription" style="color: var(--text-secondary); line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <script src="video-config.js"></script>
+    <script>
+        class VideoSlider {
+            constructor() {
+                this.currentIndex = 0;
+                this.videos = [];
+                this.filteredVideos = [];
+                this.init();
+            }
+
+            init() {
+                this.videos = window.videoConfig || [];
+                this.filteredVideos = [...this.videos];
+                this.renderSlider();
+                this.setupEventListeners();
+                this.setupFilter();
+                this.autoPlay();
+            }
+
+            renderSlider() {
+                const slider = document.getElementById('videoSlider');
+                const indicators = document.getElementById('indicators');
+                
+                if (this.filteredVideos.length === 0) {
+                    slider.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 4rem;">No videos found for this category.</div>';
+                    indicators.innerHTML = '';
+                    return;
+                }
+
+                // Render video items
+                slider.innerHTML = this.filteredVideos.map((video, index) => `
+                    <div class="video-item ${index === this.currentIndex ? 'center' : 'side'}" data-index="${index}">
+                        <div style="width: 100%; height: 100%; background: url('${video.thumbnail}') center/cover; border-radius: 18px; position: relative;">
+                            <div class="video-overlay">
+                                <div class="play-button" onclick="videoSlider.openModal(${index})">
+                                    ▶
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <div class="video-title">${video.title}</div>
+                                <div class="video-description">${video.description}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Render indicators
+                indicators.innerHTML = this.filteredVideos.map((_, index) => `
+                    <div class="indicator ${index === this.currentIndex ? 'active' : ''}" onclick="videoSlider.goToSlide(${index})"></div>
+                `).join('');
+
+                this.updateSliderPosition();
+            }
+
+            updateSliderPosition() {
+                const slider = document.getElementById('videoSlider');
+                const itemWidth = 600 + 32; // 600px width + 2rem gap
+                const containerWidth = slider.parentElement.offsetWidth;
+                const offset = containerWidth / 2 - itemWidth / 2 - (this.currentIndex * itemWidth);
+                
+                slider.style.transform = `translateX(${offset}px)`;
+                
+                // Update video item states
+                const items = slider.querySelectorAll('.video-item');
+                items.forEach((item, index) => {
+                    item.className = `video-item ${index === this.currentIndex ? 'center' : 'side'}`;
+                });
+
+                // Update indicators
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.className = `indicator ${index === this.currentIndex ? 'active' : ''}`;
+                });
+            }
+
+            nextSlide() {
+                if (this.currentIndex < this.filteredVideos.length - 1) {
+                    this.currentIndex++;
+                    this.updateSliderPosition();
+                }
+            }
+
+            prevSlide() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateSliderPosition();
+                }
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateSliderPosition();
+            }
+
+            setupEventListeners() {
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevSlide());
+                
+                // Modal events
+                document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+                document.getElementById('videoModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'videoModal') this.closeModal();
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'Escape') this.closeModal();
+                });
+            }
+
+            setupFilter() {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Update active button
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // Filter videos
+                        const category = btn.dataset.category;
+                        this.filterVideos(category);
+                    });
+                });
+            }
+
+            filterVideos(category) {
+                this.showLoading();
+                
+                setTimeout(() => {
+                    if (category === 'all') {
+                        this.filteredVideos = [...this.videos];
+                    } else {
+                        this.filteredVideos = this.videos.filter(video => video.category === category);
+                    }
+                    
+                    this.currentIndex = 0;
+                    this.renderSlider();
+                    this.hideLoading();
+                }, 500); // Simulate loading time
+            }
+
+            showLoading() {
+                document.querySelector('.loading-spinner').style.display = 'flex';
+                document.querySelector('.video-slider-container').style.opacity = '0.3';
+            }
+
+            hideLoading() {
+                document.querySelector('.loading-spinner').style.display = 'none';
+                document.querySelector('.video-slider-container').style.opacity = '1';
+            }
+
+            openModal(index) {
+                const video = this.filteredVideos[index];
+                const modal = document.getElementById('videoModal');
+                const modalVideo = modal.querySelector('video');
+                
+                modalVideo.src = video.videoUrl;
+                document.getElementById('modalTitle').textContent = video.title;
+                document.getElementById('modalDescription').textContent = video.description;
+                
+                modal.style.display = 'block';
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                }, 10);
+            }
+
+            closeModal() {
+                const modal = document.getElementById('videoModal');
+                const modalVideo = modal.querySelector('video');
+                
+                modal.style.opacity = '0';
+                modalVideo.pause();
+                modalVideo.src = '';
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+
+            autoPlay() {
+                setInterval(() => {
+                    if (this.currentIndex < this.filteredVideos.length - 1) {
+                        this.nextSlide();
+                    } else {
+                        this.currentIndex = 0;
+                        this.updateSliderPosition();
+                    }
+                }, 5000); // Auto-advance every 5 seconds
+            }
+        }
+
+        // Initialize the video slider when the page loads
+        let videoSlider;
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate hero content
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'all 1s ease-out';
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 300);
+
+            // Initialize video slider
+            videoSlider = new VideoSlider();
+
+            // Add some Star Wars flair with random star positions
+            const hero = document.querySelector('.examples-hero');
+            for (let i = 0; i < 5; i++) {
+                const star = document.createElement('div');
+                star.innerHTML = '⭐';
+                star.style.position = 'absolute';
+                star.style.top = Math.random() * 80 + '%';
+                star.style.left = Math.random() * 90 + '%';
+                star.style.fontSize = Math.random() * 1 + 0.5 + 'rem';
+                star.style.animation = `starTwinkle ${Math.random() * 2 + 2}s ease-in-out infinite`;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                hero.appendChild(star);
+            }
+        });
+
+        // Add some Force quotes that appear randomly
+        const forceQuotes = [
+            "\"Size matters not. Look at me. Judge me by my size, do you?\" - Yoda",
+            "\"Code with purpose, you must. Bugs lead to suffering.\" - Master Yoda",
+            "\"The best code is like the Force - invisible, yet powerful.\" - Yoda",
+            "\"Patience you must have, my young developer.\" - Yoda"
+        ];
+
+        setInterval(() => {
+            const quote = document.querySelector('.force-quote');
+            const randomQuote = forceQuotes[Math.floor(Math.random() * forceQuotes.length)];
+            quote.style.opacity = '0';
+            setTimeout(() => {
+                quote.textContent = randomQuote;
+                quote.style.opacity = '0.8';
+            }, 500);
+        }, 10000); // Change quote every 10 seconds
+    </script>
+</body>
+</html>
