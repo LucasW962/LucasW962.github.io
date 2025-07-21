@@ -161,6 +161,26 @@ nav ul li a:hover {
     overflow: hidden;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+    background-size: 80px 80px, 120px 120px;
+    opacity: 0.4;
+    animation: spaceRotation 200s linear infinite;
+}
+
+@keyframes spaceRotation {
+    0% { transform: rotate(0deg) translateX(20px); }
+    100% { transform: rotate(360deg) translateX(20px); }
+}
+
 .hero-content {
     opacity: 0;
     transform: translateY(60px) scale(0.9);
