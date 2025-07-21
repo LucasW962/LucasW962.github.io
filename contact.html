@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Lucas W.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--surface-bg) 100%);
+            margin-top: 80px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--surface-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-green);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--darker-bg);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--surface-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--surface-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-green);
+            color: var(--darker-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: var(--darker-bg);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get In Touch</h1>
+                <p class="subtitle">Let's Work Together</p>
+                <p class="description">
+                    Ready to bring your ideas to life? Let's discuss your next project 
+                    and create something amazing together.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 100px 0; background: var(--dark-bg);">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 style="color: var(--primary-green); margin-bottom: 2rem; font-size: 1.5rem;">Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Email</h4>
+                            <p style="color: var(--text-secondary);">your.email@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">LinkedIn</h4>
+                            <p style="color: var(--text-secondary);">linkedin.com/in/yourprofile</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💻</div>
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">GitHub</h4>
+                            <p style="color: var(--text-secondary);">github.com/LucasW962</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Follow Me</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/LucasW962" class="social-link" title="GitHub">💻</a>
+                            <a href="mailto:your.email@example.com" class="social-link" title="Email">📧</a>
+                            <a href="#" class="social-link" title="LinkedIn">💼</a>
+                            <a href="#" class="social-link" title="Twitter">🐦</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="color: var(--primary-green); margin-bottom: 2rem; font-size: 1.5rem;">Send a Message</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            const contactItems = document.querySelectorAll('.contact-info .contact-item');
+            const formGroups = document.querySelectorAll('.form-group');
+
+            // Animate hero content
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'all 1s ease-out';
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 300);
+
+            // Animate contact items
+            contactItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-30px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.6s ease-out';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 600 + (index * 200));
+            });
+
+            // Animate form groups
+            formGroups.forEach((group, index) => {
+                group.style.opacity = '0';
+                group.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    group.style.transition = 'all 0.5s ease-out';
+                    group.style.opacity = '1';
+                    group.style.transform = 'translateY(0)';
+                }, 800 + (index * 100));
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple form validation and submission simulation
+            if (data.name && data.email && data.subject && data.message) {
+                // Simulate form submission
+                const submitBtn = document.querySelector('.form-submit');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Message Sent!';
+                    submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        this.reset();
+                    }, 2000);
+                }, 1500);
+                
+                console.log('Form submitted:', data);
+            }
+        });
+
+        // Add floating animation to contact icons
+        document.querySelectorAll('.contact-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.1) rotate(360deg)';
+                icon.style.transition = 'transform 0.5s ease';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>

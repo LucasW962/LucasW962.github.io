@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Lucas W.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .projects-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--surface-bg) 100%);
+            margin-top: 80px;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary-green);
+            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--surface-bg), var(--card-bg));
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background: var(--surface-bg);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-card {
+                padding: 2rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="projects-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>My Projects</h1>
+                <p class="subtitle">Featured Work & Developments</p>
+                <p class="description">
+                    A showcase of my latest projects, experiments, and contributions 
+                    to the development community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 100px 0; background: var(--dark-bg);">
+        <div class="container">
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        🚀
+                    </div>
+                    <h3 class="project-title">E-Commerce Platform</h3>
+                    <p class="project-description">
+                        A full-stack e-commerce solution built with modern technologies. 
+                        Features include user authentication, payment processing, inventory management, 
+                        and real-time analytics dashboard.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Stripe API</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        📱
+                    </div>
+                    <h3 class="project-title">Task Management App</h3>
+                    <p class="project-description">
+                        A collaborative task management application with real-time updates, 
+                        drag-and-drop functionality, and team collaboration features. 
+                        Built with focus on user experience and performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Socket.io</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        🎨
+                    </div>
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-description">
+                        A responsive portfolio website with modern design principles, 
+                        smooth animations, and optimized performance. Features dark theme, 
+                        interactive elements, and mobile-first approach.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">GSAP</span>
+                        <span class="tech-tag">GitHub Pages</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation on scroll for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, observerOptions);
+
+        // Initially hide and observe project cards
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            observer.observe(card);
+        });
+
+        // Animate hero content
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'all 1s ease-out';
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
